@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./src/styles/main.css">
   <script type="module" src="./src/main.ts"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app-container">
@@ -15,21 +15,21 @@
     <aside class="sidebar">
       <div class="sidebar-header">
         <span class="material-icons">rocket_launch</span>
-        <h1>火箭控制站</h1>
+        <h1 data-i18n="nav.home">火箭控制站</h1>
       </div>
       <nav class="sidebar-nav">
         <div class="nav-items">
           <div class="nav-item active" id="nav-home">
             <span class="material-icons">home</span>
-            <span class="nav-label">首页</span>
+            <span class="nav-label" data-i18n="nav.home">首页</span>
           </div>
           <div class="nav-item" id="nav-sensors">
             <span class="material-icons">sensors</span>
-            <span class="nav-label">传感器</span>
+            <span class="nav-label" data-i18n="nav.sensors">传感器</span>
           </div>
           <div class="nav-item" id="nav-settings">
             <span class="material-icons">settings</span>
-            <span class="nav-label">设置</span>
+            <span class="nav-label" data-i18n="nav.settings">设置</span>
           </div>
         </div>
       </nav>
@@ -38,9 +38,9 @@
     <!-- 主内容区域 -->
     <main class="main-content">
       <header class="content-header">
-        <h2 id="page-title">控制面板</h2>
+        <h2 id="page-title" data-i18n="page.home">控制面板</h2>
         <div class="header-actions">
-          <md-filled-button id="connect-button">连接设备</md-filled-button>
+          <md-filled-button id="connect-button" data-i18n="connection.connect">连接设备</md-filled-button>
         </div>
       </header>
 
@@ -51,24 +51,24 @@
           <div class="dashboard-grid">
             <div class="dashboard-card">
               <div class="card-header">
-                <h3>火箭状态</h3>
+                <h3 data-i18n="home.status">火箭状态</h3>
               </div>
               <div class="card-content">
                 <div class="status-indicator online">
                   <span class="material-icons">check_circle</span>
-                  <span>就绪</span>
+                  <span data-i18n="home.ready">就绪</span>
                 </div>
                 <div class="status-details">
                   <div class="status-item">
-                    <span class="label">电池电量:</span>
+                    <span class="label" data-i18n="home.battery">电池电量:</span>
                     <span class="value">87%</span>
                   </div>
                   <div class="status-item">
-                    <span class="label">信号强度:</span>
+                    <span class="label" data-i18n="home.signal">信号强度:</span>
                     <span class="value">强</span>
                   </div>
                   <div class="status-item">
-                    <span class="label">GPS锁定:</span>
+                    <span class="label" data-i18n="home.gpsLock">GPS锁定:</span>
                     <span class="value">是</span>
                   </div>
                 </div>
@@ -77,54 +77,54 @@
 
             <div class="dashboard-card">
               <div class="card-header">
-                <h3>发射准备</h3>
+                <h3 data-i18n="home.launch">发射准备</h3>
               </div>
               <div class="card-content">
                 <div class="checklist">
                   <div class="checklist-item">
                     <md-checkbox checked></md-checkbox>
-                    <span>系统自检</span>
+                    <span data-i18n="home.systemCheck">系统自检</span>
                   </div>
                   <div class="checklist-item">
                     <md-checkbox checked></md-checkbox>
-                    <span>传感器校准</span>
+                    <span data-i18n="home.sensorCalibration">传感器校准</span>
                   </div>
                   <div class="checklist-item">
                     <md-checkbox></md-checkbox>
-                    <span>发射区域确认</span>
+                    <span data-i18n="home.launchAreaConfirm">发射区域确认</span>
                   </div>
                   <div class="checklist-item">
                     <md-checkbox></md-checkbox>
-                    <span>天气条件检查</span>
+                    <span data-i18n="home.weatherCheck">天气条件检查</span>
                   </div>
                 </div>
                 <div class="launch-controls">
-                  <md-filled-tonal-button disabled>开始倒计时</md-filled-tonal-button>
+                  <md-filled-tonal-button disabled data-i18n="home.startCountdown">开始倒计时</md-filled-tonal-button>
                 </div>
               </div>
             </div>
 
             <div class="dashboard-card full-width">
               <div class="card-header">
-                <h3>遥测数据</h3>
+                <h3 data-i18n="home.telemetry">遥测数据</h3>
               </div>
               <div class="card-content">
                 <div class="telemetry-grid">
                   <div class="telemetry-item">
                     <div class="telemetry-value">0</div>
-                    <div class="telemetry-label">高度 (m)</div>
+                    <div class="telemetry-label" data-i18n="home.altitude">高度 (m)</div>
                   </div>
                   <div class="telemetry-item">
                     <div class="telemetry-value">0</div>
-                    <div class="telemetry-label">速度 (m/s)</div>
+                    <div class="telemetry-label" data-i18n="home.speed">速度 (m/s)</div>
                   </div>
                   <div class="telemetry-item">
                     <div class="telemetry-value">0</div>
-                    <div class="telemetry-label">加速度 (m/s²)</div>
+                    <div class="telemetry-label" data-i18n="home.acceleration">加速度 (m/s²)</div>
                   </div>
                   <div class="telemetry-item">
                     <div class="telemetry-value">21.3</div>
-                    <div class="telemetry-label">温度 (°C)</div>
+                    <div class="telemetry-label" data-i18n="home.temperature">温度 (°C)</div>
                   </div>
                 </div>
                 <div id="telemetry-chart" class="chart-container">
@@ -140,25 +140,25 @@
           <div class="sensors-grid">
             <div class="dashboard-card">
               <div class="card-header">
-                <h3>加速度计</h3>
+                <h3 data-i18n="sensors.accelerometer">加速度计</h3>
               </div>
               <div class="card-content">
                 <div class="sensor-readings">
                   <div class="sensor-axis">
-                    <span class="axis-label">X轴:</span>
+                    <span class="axis-label" data-i18n="sensors.xAxis">X轴:</span>
                     <span class="axis-value">0.02 g</span>
                   </div>
                   <div class="sensor-axis">
-                    <span class="axis-label">Y轴:</span>
+                    <span class="axis-label" data-i18n="sensors.yAxis">Y轴:</span>
                     <span class="axis-value">0.01 g</span>
                   </div>
                   <div class="sensor-axis">
-                    <span class="axis-label">Z轴:</span>
+                    <span class="axis-label" data-i18n="sensors.zAxis">Z轴:</span>
                     <span class="axis-value">1.00 g</span>
                   </div>
                 </div>
                 <div class="sensor-actions">
-                  <md-text-button>校准</md-text-button>
+                  <md-text-button data-i18n="sensors.calibrate">校准</md-text-button>
                 </div>
                 <div id="accelerometer-chart" class="chart-container">
                   <span class="chart-placeholder">图表加载中...</span>
@@ -168,21 +168,21 @@
 
             <div class="dashboard-card">
               <div class="card-header">
-                <h3>气压计</h3>
+                <h3 data-i18n="sensors.barometer">气压计</h3>
               </div>
               <div class="card-content">
                 <div class="sensor-readings">
                   <div class="sensor-reading">
-                    <span class="reading-label">气压:</span>
+                    <span class="reading-label" data-i18n="sensors.pressure">气压:</span>
                     <span class="reading-value">101.3 kPa</span>
                   </div>
                   <div class="sensor-reading">
-                    <span class="reading-label">高度:</span>
+                    <span class="reading-label" data-i18n="sensors.altitude">高度:</span>
                     <span class="reading-value">0 m</span>
                   </div>
                 </div>
                 <div class="sensor-actions">
-                  <md-text-button>校准</md-text-button>
+                  <md-text-button data-i18n="sensors.calibrate">校准</md-text-button>
                 </div>
                 <div id="altitude-chart" class="chart-container">
                   <span class="chart-placeholder">图表加载中...</span>
@@ -192,20 +192,20 @@
 
             <div class="dashboard-card">
               <div class="card-header">
-                <h3>GPS</h3>
+                <h3 data-i18n="sensors.gps">GPS</h3>
               </div>
               <div class="card-content">
                 <div class="sensor-readings">
                   <div class="sensor-reading">
-                    <span class="reading-label">纬度:</span>
+                    <span class="reading-label" data-i18n="sensors.latitude">纬度:</span>
                     <span class="reading-value">39.9042° N</span>
                   </div>
                   <div class="sensor-reading">
-                    <span class="reading-label">经度:</span>
+                    <span class="reading-label" data-i18n="sensors.longitude">经度:</span>
                     <span class="reading-value">116.4074° E</span>
                   </div>
                   <div class="sensor-reading">
-                    <span class="reading-label">卫星数:</span>
+                    <span class="reading-label" data-i18n="sensors.satellites">卫星数:</span>
                     <span class="reading-value">8</span>
                   </div>
                 </div>
@@ -220,25 +220,25 @@
 
             <div class="dashboard-card">
               <div class="card-header">
-                <h3>陀螺仪</h3>
+                <h3 data-i18n="sensors.gyroscope">陀螺仪</h3>
               </div>
               <div class="card-content">
                 <div class="sensor-readings">
                   <div class="sensor-axis">
-                    <span class="axis-label">俯仰角:</span>
+                    <span class="axis-label" data-i18n="sensors.pitch">俯仰角:</span>
                     <span class="axis-value">0.5°</span>
                   </div>
                   <div class="sensor-axis">
-                    <span class="axis-label">偏航角:</span>
+                    <span class="axis-label" data-i18n="sensors.yaw">偏航角:</span>
                     <span class="axis-value">1.2°</span>
                   </div>
                   <div class="sensor-axis">
-                    <span class="axis-label">滚转角:</span>
+                    <span class="axis-label" data-i18n="sensors.roll">滚转角:</span>
                     <span class="axis-value">0.3°</span>
                   </div>
                 </div>
                 <div class="sensor-actions">
-                  <md-text-button>校准</md-text-button>
+                  <md-text-button data-i18n="sensors.calibrate">校准</md-text-button>
                 </div>
                 <div id="gyroscope-chart" class="chart-container">
                   <span class="chart-placeholder">图表加载中...</span>
@@ -253,59 +253,59 @@
           <div class="settings-container">
             <div class="dashboard-card full-width">
               <div class="card-header">
-                <h3>系统设置</h3>
+                <h3 data-i18n="page.settings">系统设置</h3>
               </div>
               <div class="card-content">
                 <div class="settings-form">
                   <div class="settings-group">
-                    <h4>连接设置</h4>
+                    <h4 data-i18n="settings.connection">连接设置</h4>
                     <div class="setting-item">
-                      <label for="device-id">设备ID</label>
+                      <label for="device-id" data-i18n="settings.deviceId">设备ID</label>
                       <md-filled-text-field id="device-id" value="ROCKET-001"></md-filled-text-field>
                     </div>
                     <div class="setting-item">
-                      <label for="connection-type">连接类型</label>
+                      <label for="connection-type" data-i18n="settings.connectionType">连接类型</label>
                       <md-filled-select id="connection-type">
                         <md-select-option value="bluetooth" selected>
-                          <div slot="headline">蓝牙</div>
+                          <div slot="headline" data-i18n="settings.bluetooth">蓝牙</div>
                         </md-select-option>
                         <md-select-option value="wifi">
-                          <div slot="headline">WiFi</div>
+                          <div slot="headline" data-i18n="settings.wifi">WiFi</div>
                         </md-select-option>
                         <md-select-option value="radio">
-                          <div slot="headline">无线电</div>
+                          <div slot="headline" data-i18n="settings.radio">无线电</div>
                         </md-select-option>
                       </md-filled-select>
                     </div>
                   </div>
 
                   <div class="settings-group">
-                    <h4>遥测设置</h4>
+                    <h4 data-i18n="settings.telemetry">遥测设置</h4>
                     <div class="setting-item">
-                      <label for="telemetry-rate">遥测频率 (Hz)</label>
+                      <label for="telemetry-rate" data-i18n="settings.rate">遥测频率 (Hz)</label>
                       <md-filled-text-field id="telemetry-rate" type="number" value="10"></md-filled-text-field>
                     </div>
                     <div class="setting-item">
-                      <label for="data-logging">数据记录</label>
+                      <label for="data-logging" data-i18n="settings.logging">数据记录</label>
                       <md-switch id="data-logging" selected></md-switch>
                     </div>
                   </div>
 
                   <div class="settings-group">
-                    <h4>发射设置</h4>
+                    <h4 data-i18n="settings.launch">发射设置</h4>
                     <div class="setting-item">
-                      <label for="countdown-time">倒计时时间 (秒)</label>
+                      <label for="countdown-time" data-i18n="settings.countdownTime">倒计时时间 (秒)</label>
                       <md-filled-text-field id="countdown-time" type="number" value="10"></md-filled-text-field>
                     </div>
                     <div class="setting-item">
-                      <label for="safety-checks">安全检查</label>
+                      <label for="safety-checks" data-i18n="settings.safetyChecks">安全检查</label>
                       <md-switch id="safety-checks" selected></md-switch>
                     </div>
                   </div>
 
                   <div class="settings-actions">
-                    <md-filled-button id="save-settings">保存设置</md-filled-button>
-                    <md-outlined-button id="reset-settings">重置</md-outlined-button>
+                    <md-filled-button id="save-settings" data-i18n="settings.save">保存设置</md-filled-button>
+                    <md-outlined-button id="reset-settings" data-i18n="settings.reset">重置</md-outlined-button>
                   </div>
                 </div>
               </div>

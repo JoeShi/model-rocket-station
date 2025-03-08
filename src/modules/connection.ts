@@ -81,27 +81,34 @@ export class ConnectionManager {
   private updateConnectionUI(): void {
     if (!this.connectButton) return;
 
-    switch (this.state) {
-      case ConnectionState.DISCONNECTED:
-        this.connectButton.textContent = '连接设备';
-        this.updateStatusIndicator('offline', '未连接');
-        break;
+    // 导入i18n模块
+    import('./i18n').then(module => {
+      const i18n = module.default;
       
-      case ConnectionState.CONNECTING:
-        this.connectButton.textContent = '正在连接...';
-        this.updateStatusIndicator('connecting', '正在连接');
-        break;
-      
-      case ConnectionState.CONNECTED:
-        this.connectButton.textContent = '断开连接';
-        this.updateStatusIndicator('online', '已连接');
-        break;
-      
-      case ConnectionState.ERROR:
-        this.connectButton.textContent = '连接失败';
-        this.updateStatusIndicator('error', '连接错误');
-        break;
-    }
+      switch (this.state) {
+        case ConnectionState.DISCONNECTED:
+          this.connectButton.textContent = i18n.t('connection.connect');
+          this.connectButton.setAttribute('data-i18n', 'connection.connect');
+          this.updateStatusIndicator('offline', i18n.t('home.disconnected'));
+          break;
+        
+        case ConnectionState.CONNECTING:
+          this.connectButton.textContent = i18n.t('connection.connecting');
+          this.updateStatusIndicator('connecting', i18n.t('home.connecting'));
+          break;
+        
+        case ConnectionState.CONNECTED:
+          this.connectButton.textContent = i18n.t('connection.disconnect');
+          this.connectButton.setAttribute('data-i18n', 'connection.disconnect');
+          this.updateStatusIndicator('online', i18n.t('home.ready'));
+          break;
+        
+        case ConnectionState.ERROR:
+          this.connectButton.textContent = i18n.t('connection.error');
+          this.updateStatusIndicator('error', i18n.t('home.connectionError'));
+          break;
+      }
+    });
   }
 
   /**

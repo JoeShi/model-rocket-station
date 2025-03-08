@@ -17,10 +17,15 @@ import { SensorManager } from './modules/sensors';
 import { SettingsManager } from './modules/settings';
 import { ConnectionManager } from './modules/connection';
 import { ChartManager } from './modules/charts';
+import i18n from './modules/i18n';
 
 // 等待 DOM 加载完成
 document.addEventListener('DOMContentLoaded', () => {
   console.log('模型火箭控制站应用已加载');
+  
+  // 初始化国际化
+  i18n.initLanguageSelector();
+  i18n.updatePageText();
   
   // 初始化导航管理器
   const navigationManager = new NavigationManager();
