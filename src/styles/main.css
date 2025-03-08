@@ -1,0 +1,515 @@
+/* 全局样式 */
+:root {
+  --md-sys-color-primary: #006a6a;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #6ff7f7;
+  --md-sys-color-on-primary-container: #002020;
+  --md-sys-color-secondary: #4a6363;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #cce8e7;
+  --md-sys-color-on-secondary-container: #051f1f;
+  --md-sys-color-surface: #fafdfc;
+  --md-sys-color-on-surface: #191c1c;
+  --md-sys-color-surface-variant: #dae5e4;
+  --md-sys-color-on-surface-variant: #3f4948;
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-on-error: #ffffff;
+  
+  --sidebar-width: 250px;
+  --header-height: 64px;
+  --card-border-radius: 12px;
+  
+  --font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--md-sys-color-on-surface);
+  background-color: #f0f4f4;
+  min-height: 100vh;
+}
+
+/* 应用容器 */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--md-sys-color-surface);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  height: 100vh;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  height: var(--header-height);
+}
+
+.sidebar-header span {
+  margin-right: 12px;
+}
+
+.sidebar-header h1 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.sidebar-nav {
+  padding: 16px 0;
+  flex: 1;
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 0 24px 24px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-right: 12px;
+}
+
+.nav-item:hover {
+  background-color: rgba(0, 106, 106, 0.08);
+}
+
+.nav-item.active {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  font-weight: 500;
+}
+
+.nav-item .material-icons {
+  margin-right: 16px;
+}
+
+.nav-label {
+  font-size: 0.95rem;
+}
+
+/* 主内容区域 */
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  background-color: #f0f4f4;
+}
+
+.content-header {
+  height: var(--header-height);
+  background-color: var(--md-sys-color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content-header h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--md-sys-color-primary);
+}
+
+.content-container {
+  padding: 24px;
+}
+
+/* 页面样式 */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 仪表盘卡片样式 */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.sensors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 24px;
+}
+
+.dashboard-card {
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  background-color: rgba(0, 106, 106, 0.03);
+}
+
+.card-header h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--md-sys-color-primary);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+/* 状态指示器 */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: rgba(46, 125, 50, 0.1);
+  width: fit-content;
+}
+
+.status-indicator span {
+  margin-right: 8px;
+}
+
+.status-indicator.online {
+  color: #2e7d32;
+}
+
+.status-indicator.offline {
+  color: var(--md-sys-color-error);
+  background-color: rgba(186, 26, 26, 0.1);
+}
+
+.status-indicator.connecting {
+  color: #ed6c02;
+  background-color: rgba(237, 108, 2, 0.1);
+}
+
+.status-indicator.error {
+  color: var(--md-sys-color-error);
+  background-color: rgba(186, 26, 26, 0.1);
+}
+
+.status-details {
+  margin-top: 16px;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.status-item:last-child {
+  border-bottom: none;
+}
+
+.status-item .label {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.status-item .value {
+  font-weight: 500;
+}
+
+/* 检查列表 */
+.checklist {
+  margin-bottom: 24px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.checklist-item span {
+  margin-left: 12px;
+}
+
+.launch-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* 遥测数据 */
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.telemetry-item {
+  text-align: center;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.telemetry-item:hover {
+  transform: translateY(-2px);
+}
+
+.telemetry-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--md-sys-color-primary);
+  margin-bottom: 8px;
+}
+
+.telemetry-label {
+  font-size: 0.9rem;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* 图表容器 */
+.chart-container {
+  height: 300px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-top: 20px;
+}
+
+.chart-placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+  font-style: italic;
+}
+
+/* GPS地图 */
+.gps-map {
+  height: 300px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.map-placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.map-placeholder .material-icons {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+/* 传感器页面样式 */
+.sensor-readings {
+  margin-bottom: 20px;
+}
+
+.sensor-axis, .sensor-reading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.sensor-axis:last-child, .sensor-reading:last-child {
+  border-bottom: none;
+}
+
+.axis-label, .reading-label {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.axis-value, .reading-value {
+  font-weight: 500;
+}
+
+.sensor-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* 设置页面样式 */
+.settings-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.settings-group {
+  margin-bottom: 32px;
+}
+
+.settings-group h4 {
+  margin-bottom: 20px;
+  color: var(--md-sys-color-primary);
+  font-weight: 500;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--md-sys-color-primary-container);
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.setting-item label {
+  width: 150px;
+  margin-right: 20px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+/* 倒计时覆盖层 */
+.countdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.countdown-content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-content h2 {
+  color: var(--md-sys-color-primary);
+  margin-bottom: 20px;
+}
+
+.countdown-timer {
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--md-sys-color-primary);
+  margin: 20px 0 30px;
+}
+
+/* Material Web 组件自定义样式 */
+md-filled-button {
+  --md-filled-button-container-color: var(--md-sys-color-primary);
+  --md-filled-button-label-text-color: var(--md-sys-color-on-primary);
+}
+
+md-outlined-button {
+  --md-outlined-button-outline-color: var(--md-sys-color-outline);
+  --md-outlined-button-label-text-color: var(--md-sys-color-primary);
+}
+
+md-filled-tonal-button {
+  --md-filled-tonal-button-container-color: var(--md-sys-color-secondary-container);
+  --md-filled-tonal-button-label-text-color: var(--md-sys-color-on-secondary-container);
+}
+
+md-text-button {
+  --md-text-button-label-text-color: var(--md-sys-color-primary);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 64px;
+    overflow: hidden;
+  }
+  
+  .sidebar-header h1 {
+    display: none;
+  }
+  
+  .nav-label {
+    display: none;
+  }
+  
+  .main-content {
+    margin-left: 64px;
+  }
+  
+  .dashboard-grid, .sensors-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .telemetry-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .setting-item label {
+    margin-bottom: 8px;
+    width: 100%;
+  }
+}
