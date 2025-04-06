@@ -1,3 +1,7 @@
+# Model Rocket Control Station
+
+This is a model rocket control program built with TypeScript and @material/web components. The application provides a user interface for monitoring and controlling various parameters and functions of model rockets.
+
 # 模型火箭控制站
 
 这是一个使用 TypeScript 和 @material/web 组件库构建的模型火箭控制程序。该应用程序提供了一个用户界面，用于监控和控制模型火箭的各种参数和功能。
