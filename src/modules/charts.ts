@@ -585,4 +585,36 @@ export class ChartManager {
       ]
     });
   }
+  
+  /**
+   * 更新气压计图表
+   * @param pressure 气压值
+   * @param altitude 高度值
+   */
+  public updateBarometerChart(pressure: number, altitude: number): void {
+    if (!this.altitudeChart) return;
+    
+    // 更新高度数据
+    this.altitudeData.push(altitude);
+    
+    // 保持数组长度为30
+    if (this.altitudeData.length > 30) {
+      this.altitudeData.shift();
+    }
+    
+    // 更新图表
+    this.altitudeChart.setOption({
+      xAxis: {
+        data: this.timeData
+      },
+      series: [
+        {
+          data: this.altitudeData
+        },
+        {
+          data: this.temperatureData
+        }
+      ]
+    });
+  }
 }

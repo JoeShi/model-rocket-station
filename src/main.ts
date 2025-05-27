@@ -95,6 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
     chartManager.updateGyroscopeChart(pitch, yaw, roll);
   });
   
+  sensorManager.setBarometerUpdateCallback((pressure, altitude) => {
+    chartManager.updateBarometerChart(pressure, altitude);
+  });
+  
   // 模拟遥测数据更新
   telemetryManager.startSimulation();
   
@@ -147,6 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 模拟火箭发射
         telemetryManager.simulateLaunch();
+        
+        // 同时触发传感器模拟发射
+        sensorManager.simulateLaunch();
         
         // 显示发射成功消息
         alert('火箭发射成功！');
