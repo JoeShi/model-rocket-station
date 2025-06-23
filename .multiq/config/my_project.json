@@ -1,0 +1,34 @@
+{
+  "supervisor": {
+    "name": "coding_supervisor",
+    "context_file": [
+      "/Users/qiaoshi/.aws/multiq/agents/coding_supervisor_with_ui_tester/context.md"
+    ]
+  },
+  "agents": [
+    {
+      "name": "developer",
+      "role": "Writes code and implements features based on requirements",
+      "context_file": [
+        "/Users/qiaoshi/.aws/multiq/agents/developer/context.md"
+      ],
+      "mcp_config": {}
+    },
+    {
+      "name": "code_reviewer",
+      "role": "Reviews code for quality, security, and best practices",
+      "context_file": [
+        "/Users/qiaoshi/.aws/multiq/agents/code_reviewer/context.md"
+      ],
+      "mcp_config": {}
+    },
+    {
+      "name": "ui_tester",
+      "role": "Perform web UI testing to verify website functionality, user experience, and interface reliability",
+      "context_file": [
+        "/Users/qiaoshi/.aws/multiq/agents/ui_tester/context.md"
+      ],
+      "mcp_config": {}
+    }
+  ]
+}

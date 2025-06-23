@@ -503,7 +503,314 @@ md-text-button {
   --md-text-button-label-text-color: var(--md-sys-color-primary);
 }
 
-/* 响应式设计 */
+/* 视频流样式 */
+.video-stream-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.video-display {
+  position: relative;
+  background-color: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  max-height: 400px;
+}
+
+#video-stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 16px;
+}
+
+.video-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+}
+
+.video-status-indicator .material-icons {
+  font-size: 18px;
+}
+
+.video-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  background-color: rgba(0, 106, 106, 0.03);
+  border-radius: 12px;
+}
+
+.camera-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.control-label {
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface-variant);
+  white-space: nowrap;
+}
+
+.camera-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.camera-switch-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+  transition: all 0.2s ease;
+}
+
+.camera-switch-button.active {
+  --md-filled-tonal-button-container-color: var(--md-sys-color-primary);
+  --md-filled-tonal-button-label-text-color: var(--md-sys-color-on-primary);
+  transform: scale(1.05);
+}
+
+.camera-switch-button .material-icons {
+  font-size: 18px;
+}
+
+.camera-switch-button .button-text {
+  font-size: 0.9rem;
+}
+
+.playback-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#video-play-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+  transition: transform 0.2s ease;
+}
+
+#video-play-button:hover {
+  transform: scale(1.05);
+}
+
+#video-play-button .material-icons {
+  font-size: 20px;
+}
+
+/* 视频流错误状态 */
+.video-stream-container.error .video-display {
+  background-color: rgba(186, 26, 26, 0.1);
+  border: 2px dashed var(--md-sys-color-error);
+}
+
+.video-stream-container.error .video-status-indicator {
+  background-color: rgba(186, 26, 26, 0.9);
+}
+
+/* 视频流加载状态 */
+.video-stream-container.loading .video-display::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 响应式设计 - 视频流 */
+@media (max-width: 768px) {
+  .video-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .camera-controls {
+    justify-content: center;
+  }
+  
+  .camera-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .camera-switch-button {
+    min-width: 100px;
+    flex: 1;
+    max-width: 120px;
+  }
+  
+  .playback-controls {
+    justify-content: center;
+  }
+  
+  .video-display {
+    max-height: 300px; /* 增加移动端高度 */
+    min-height: 200px; /* 确保最小高度 */
+  }
+  
+  #video-stream {
+    object-fit: cover; /* 确保视频适应容器 */
+  }
+}
+
+@media (max-width: 480px) {
+  .video-overlay {
+    padding: 12px;
+  }
+  
+  .video-status-indicator {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+  
+  .video-display {
+    max-height: 250px;
+    min-height: 180px;
+  }
+  
+  .camera-switch-button {
+    min-width: 70px;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+  
+  .camera-switch-button .button-text {
+    display: none; /* 在小屏幕上隐藏文本，只显示图标 */
+  }
+  
+  .camera-switch-button::after {
+    content: attr(data-camera-number);
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  
+  #video-play-button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 360px) {
+  .video-display {
+    max-height: 200px;
+    min-height: 150px;
+  }
+  
+  .video-controls {
+    gap: 8px;
+  }
+  
+  .camera-buttons {
+    gap: 6px;
+  }
+  
+  .camera-switch-button {
+    min-width: 60px;
+    padding: 6px 8px;
+  }
+}
+
+/* 横屏模式优化 */
+@media (max-height: 500px) and (orientation: landscape) {
+  .video-display {
+    max-height: 200px;
+  }
+  
+  .video-controls {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .camera-buttons {
+    flex-direction: row;
+    gap: 8px;
+  }
+}
+
+/* 高分辨率屏幕优化 */
+@media (min-width: 1200px) {
+  .video-display {
+    max-height: 500px;
+    min-height: 400px;
+  }
+  
+  .video-stream-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+  .camera-switch-button,
+  #video-play-button {
+    min-height: 44px; /* 确保触摸目标足够大 */
+    touch-action: manipulation; /* 优化触摸响应 */
+  }
+  
+  .camera-switch-button:active,
+  #video-play-button:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+}
+  
+  .camera-switch-button .button-text {
+    font-size: 0.8rem;
+  }
+}
 @media (max-width: 768px) {
   .sidebar {
     width: 64px;

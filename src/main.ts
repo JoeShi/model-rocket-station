@@ -17,6 +17,7 @@ import { SensorManager } from './modules/sensors';
 import { SettingsManager } from './modules/settings';
 import { ConnectionManager } from './modules/connection';
 import { ChartManager } from './modules/charts';
+import { VideoStreamManager } from './modules/videoStream';
 import i18n from './modules/i18n';
 
 // 等待 DOM 加载完成
@@ -44,6 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // 初始化连接管理器
   const connectionManager = new ConnectionManager();
+  
+  // 初始化视频流管理器
+  const videoStreamManager = new VideoStreamManager();
   
   // 设置连接按钮事件
   const connectButton = document.getElementById('connect-button');
@@ -153,4 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 1000);
   }
+  
+  // 页面卸载时清理资源
+  window.addEventListener('beforeunload', () => {
+    videoStreamManager.destroy();
+  });
 });

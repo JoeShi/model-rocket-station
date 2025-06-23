@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "multiq": {
+      "timeout": 1200000,
+      "command": "uvx",
+      "args": ["--with", "/Users/qiaoshi/Developer/MultiQ/multiq-mcp-server/", "multiq-mcp-server"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

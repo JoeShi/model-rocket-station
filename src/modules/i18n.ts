@@ -50,6 +50,7 @@ const translations: Record<Language, Translations> = {
     'home.speed': '速度',
     'home.acceleration': '加速度',
     'home.temperature': '温度',
+    'home.videoStream': '视频流监控',
     
     // 传感器
     'sensors.accelerometer': '加速度计',
@@ -84,6 +85,34 @@ const translations: Record<Language, Translations> = {
     'settings.safetyChecks': '安全检查',
     'settings.save': '保存设置',
     'settings.reset': '重置设置',
+    
+    // 视频流
+    'video.play': '播放',
+    'video.pause': '暂停',
+    'video.cameraSelect': '机位选择',
+    'video.camera1': '机位 1',
+    'video.camera2': '机位 2',
+    'video.camera': '摄像头 {number}',
+    'video.cameraPosition': '机位 {number}',
+    'video.devicesFound': '发现摄像头设备',
+    'video.devicesDetected': '已检测到摄像头设备',
+    'video.deviceAccessError': '无法访问摄像头设备',
+    'video.streamStarted': '视频流已启动',
+    'video.streamStopped': '视频流已停止',
+    'video.streamStartError': '启动视频流失败',
+    'video.invalidCameraIndex': '无效的摄像头索引',
+    'video.switchedToCamera': '切换到摄像头 {camera}',
+    'video.status.playing': '正在播放机位 {camera}',
+    'video.status.stopped': '视频流已停止',
+    'video.error.browserNotSupported': '浏览器不支持摄像头功能，请使用现代浏览器',
+    'video.error.permissionDenied': '摄像头权限被拒绝，请在浏览器设置中允许摄像头访问',
+    'video.error.noDevicesFound': '未找到摄像头设备，请检查设备连接',
+    'video.error.deviceInUse': '摄像头设备正被其他应用使用，请关闭其他应用后重试',
+    'video.error.constraintsNotSatisfied': '摄像头不支持请求的分辨率或帧率',
+    'video.error.securityError': '安全错误，请确保在HTTPS环境下使用',
+    'video.error.operationAborted': '操作被中止',
+    'video.error.unknown': '未知错误',
+    'video.error.noDevicesAvailable': '未找到可用的摄像头设备',
     
     // 语言
     'language': '语言',
@@ -129,6 +158,7 @@ const translations: Record<Language, Translations> = {
     'home.speed': '速度',
     'home.acceleration': '加速度',
     'home.temperature': '溫度',
+    'home.videoStream': '視頻流監控',
     
     // 傳感器
     'sensors.accelerometer': '加速度計',
@@ -163,6 +193,34 @@ const translations: Record<Language, Translations> = {
     'settings.safetyChecks': '安全檢查',
     'settings.save': '保存設置',
     'settings.reset': '重置設置',
+    
+    // 視頻流
+    'video.play': '播放',
+    'video.pause': '暫停',
+    'video.cameraSelect': '機位選擇',
+    'video.camera1': '機位 1',
+    'video.camera2': '機位 2',
+    'video.camera': '攝像頭 {number}',
+    'video.cameraPosition': '機位 {number}',
+    'video.devicesFound': '發現攝像頭設備',
+    'video.devicesDetected': '已檢測到攝像頭設備',
+    'video.deviceAccessError': '無法訪問攝像頭設備',
+    'video.streamStarted': '視頻流已啟動',
+    'video.streamStopped': '視頻流已停止',
+    'video.streamStartError': '啟動視頻流失敗',
+    'video.invalidCameraIndex': '無效的攝像頭索引',
+    'video.switchedToCamera': '切換到攝像頭 {camera}',
+    'video.status.playing': '正在播放機位 {camera}',
+    'video.status.stopped': '視頻流已停止',
+    'video.error.browserNotSupported': '瀏覽器不支持攝像頭功能，請使用現代瀏覽器',
+    'video.error.permissionDenied': '攝像頭權限被拒絕，請在瀏覽器設置中允許攝像頭訪問',
+    'video.error.noDevicesFound': '未找到攝像頭設備，請檢查設備連接',
+    'video.error.deviceInUse': '攝像頭設備正被其他應用使用，請關閉其他應用後重試',
+    'video.error.constraintsNotSatisfied': '攝像頭不支持請求的分辨率或幀率',
+    'video.error.securityError': '安全錯誤，請確保在HTTPS環境下使用',
+    'video.error.operationAborted': '操作被中止',
+    'video.error.unknown': '未知錯誤',
+    'video.error.noDevicesAvailable': '未找到可用的攝像頭設備',
     
     // 語言
     'language': '語言',
@@ -208,6 +266,7 @@ const translations: Record<Language, Translations> = {
     'home.speed': 'Speed',
     'home.acceleration': 'Acceleration',
     'home.temperature': 'Temperature',
+    'home.videoStream': 'Video Stream Monitor',
     
     // Sensors
     'sensors.accelerometer': 'Accelerometer',
@@ -243,6 +302,34 @@ const translations: Record<Language, Translations> = {
     'settings.save': 'Save Settings',
     'settings.reset': 'Reset Settings',
     
+    // Video Stream
+    'video.play': 'Play',
+    'video.pause': 'Pause',
+    'video.cameraSelect': 'Camera Selection',
+    'video.camera1': 'Camera 1',
+    'video.camera2': 'Camera 2',
+    'video.camera': 'Camera {number}',
+    'video.cameraPosition': 'Position {number}',
+    'video.devicesFound': 'Camera devices found',
+    'video.devicesDetected': 'Camera devices detected',
+    'video.deviceAccessError': 'Unable to access camera devices',
+    'video.streamStarted': 'Video stream started',
+    'video.streamStopped': 'Video stream stopped',
+    'video.streamStartError': 'Failed to start video stream',
+    'video.invalidCameraIndex': 'Invalid camera index',
+    'video.switchedToCamera': 'Switched to camera {camera}',
+    'video.status.playing': 'Playing camera {camera}',
+    'video.status.stopped': 'Video stream stopped',
+    'video.error.browserNotSupported': 'Browser does not support camera functionality, please use a modern browser',
+    'video.error.permissionDenied': 'Camera permission denied, please allow camera access in browser settings',
+    'video.error.noDevicesFound': 'No camera devices found, please check device connection',
+    'video.error.deviceInUse': 'Camera device is being used by another application, please close other apps and try again',
+    'video.error.constraintsNotSatisfied': 'Camera does not support the requested resolution or frame rate',
+    'video.error.securityError': 'Security error, please ensure using HTTPS environment',
+    'video.error.operationAborted': 'Operation aborted',
+    'video.error.unknown': 'Unknown error',
+    'video.error.noDevicesAvailable': 'No camera devices available',
+    
     // Language
     'language': 'Language',
     'language.zh-CN': '简体中文',
@@ -267,10 +354,21 @@ export class I18nManager {
   /**
    * 获取翻译文本
    * @param key 翻译键
+   * @param params 参数对象，用于替换模板中的占位符
    * @returns 翻译后的文本
    */
-  public t(key: string): string {
-    return translations[this.currentLanguage][key] || key;
+  public t(key: string, params?: Record<string, string | number>): string {
+    let text = translations[this.currentLanguage][key] || key;
+    
+    // 如果有参数，进行模板替换
+    if (params) {
+      Object.keys(params).forEach(paramKey => {
+        const placeholder = `{${paramKey}}`;
+        text = text.replace(new RegExp(placeholder, 'g'), String(params[paramKey]));
+      });
+    }
+    
+    return text;
   }
 
   /**

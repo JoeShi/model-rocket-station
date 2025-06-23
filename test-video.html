@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>视频流测试</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .video-container {
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    
+    video {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    
+    .controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .play-btn {
+      background: #006a6a;
+      color: white;
+    }
+    
+    .camera-btn {
+      background: #e0e0e0;
+      color: #333;
+    }
+    
+    .camera-btn.active {
+      background: #006a6a;
+      color: white;
+    }
+    
+    .status {
+      margin-top: 10px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>视频流功能测试</h1>
+    
+    <div class="video-container">
+      <video id="video-stream" autoplay muted playsinline>
+        <p>您的浏览器不支持视频播放</p>
+      </video>
+    </div>
+    
+    <div class="controls">
+      <button id="play-btn" class="play-btn">播放</button>
+      <button class="camera-btn active" data-camera="0">摄像头 1</button>
+      <button class="camera-btn" data-camera="1">摄像头 2</button>
+    </div>
+    
+    <div class="status" id="status">
+      等待启动视频流...
+    </div>
+  </div>
+
+  <script>
+    class SimpleVideoManager {
+      constructor() {
+        this.video = document.getElementById('video-stream');
+        this.playBtn = document.getElementById('play-btn');
+        this.cameraButtons = document.querySelectorAll('.camera-btn');
+        this.status = document.getElementById('status');
+        
+        this.currentStream = null;
+        this.devices = [];
+        this.currentDeviceIndex = 0;
+        this.isPlaying = false;
+        
+        this.init();
+      }
+      
+      async init() {
+        this.setupEvents();
+        await this.getDevices();
+      }
+      
+      setupEvents() {
+        this.playBtn.addEventListener('click', () => this.togglePlay());
+        
+        this.cameraButtons.forEach((btn, index) => {
+          btn.addEventListener('click', () => this.switchCamera(index));
+        });
+      }
+      
+      async getDevices() {
+        try {
+          await navigator.mediaDevices.getUserMedia({ video: true });
+          const devices = await navigator.mediaDevices.enumerateDevices();
+          this.devices = devices.filter(d => d.kind === 'videoinput');
+          
+          this.updateStatus(`发现 ${this.devices.length} 个摄像头设备`);
+          this.updateCameraButtons();
+        } catch (error) {
+          this.updateStatus('无法访问摄像头: ' + error.message);
+        }
+      }
+      
+      async startStream() {
+        try {
+          this.stopStream();
+          
+          const deviceId = this.devices[this.currentDeviceIndex]?.deviceId;
+          const constraints = {
+            video: {
+              deviceId: deviceId ? { exact: deviceId } : undefined,
+              width: { ideal: 640 },
+              height: { ideal: 480 }
+            }
+          };
+          
+          this.currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+          this.video.srcObject = this.currentStream;
+          
+          this.isPlaying = true;
+          this.updatePlayButton();
+          this.updateStatus(`正在播放摄像头 ${this.currentDeviceIndex + 1}`);
+          
+        } catch (error) {
+          this.updateStatus('启动视频流失败: ' + error.message);
+        }
+      }
+      
+      stopStream() {
+        if (this.currentStream) {
+          this.currentStream.getTracks().forEach(track => track.stop());
+          this.currentStream = null;
+        }
+        this.video.srcObject = null;
+        this.isPlaying = false;
+        this.updatePlayButton();
+        this.updateStatus('视频流已停止');
+      }
+      
+      togglePlay() {
+        if (this.isPlaying) {
+          this.stopStream();
+        } else {
+          this.startStream();
+        }
+      }
+      
+      async switchCamera(index) {
+        if (index >= this.devices.length) return;
+        
+        this.currentDeviceIndex = index;
+        this.updateCameraButtons();
+        
+        if (this.isPlaying) {
+          await this.startStream();
+        }
+      }
+      
+      updatePlayButton() {
+        this.playBtn.textContent = this.isPlaying ? '暂停' : '播放';
+      }
+      
+      updateCameraButtons() {
+        this.cameraButtons.forEach((btn, index) => {
+          btn.classList.toggle('active', index === this.currentDeviceIndex);
+          btn.disabled = index >= this.devices.length;
+          
+          if (index < this.devices.length) {
+            const device = this.devices[index];
+            btn.textContent = device.label || `摄像头 ${index + 1}`;
+          }
+        });
+      }
+      
+      updateStatus(message) {
+        this.status.textContent = message;
+        console.log(message);
+      }
+    }
+    
+    // 启动测试
+    document.addEventListener('DOMContentLoaded', () => {
+      new SimpleVideoManager();
+    });
+  </script>
+</body>
+</html>

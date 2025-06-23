@@ -106,6 +106,48 @@
 
             <div class="dashboard-card full-width">
               <div class="card-header">
+                <h3 data-i18n="home.videoStream">视频流监控</h3>
+              </div>
+              <div class="card-content">
+                <div class="video-stream-container">
+                  <div class="video-display">
+                    <video id="video-stream" autoplay muted playsinline>
+                      <p>您的浏览器不支持视频播放</p>
+                    </video>
+                    <div class="video-overlay">
+                      <div class="video-status-indicator">
+                        <span class="material-icons">videocam</span>
+                        <span id="video-status">等待启动视频流</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="video-controls">
+                    <div class="camera-controls">
+                      <span class="control-label" data-i18n="video.cameraSelect">机位选择:</span>
+                      <div class="camera-buttons">
+                        <md-filled-tonal-button class="camera-switch-button" data-camera="0">
+                          <span class="material-icons">videocam</span>
+                          <span class="button-text">机位 1</span>
+                        </md-filled-tonal-button>
+                        <md-filled-tonal-button class="camera-switch-button" data-camera="1">
+                          <span class="material-icons">videocam</span>
+                          <span class="button-text">机位 2</span>
+                        </md-filled-tonal-button>
+                      </div>
+                    </div>
+                    <div class="playback-controls">
+                      <md-filled-button id="video-play-button">
+                        <span class="material-icons">play_arrow</span>
+                        <span class="button-text" data-i18n="video.play">播放</span>
+                      </md-filled-button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-card full-width">
+              <div class="card-header">
                 <h3 data-i18n="home.telemetry">遥测数据</h3>
               </div>
               <div class="card-content">
